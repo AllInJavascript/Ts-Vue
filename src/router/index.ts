@@ -1,10 +1,10 @@
 import Vue from 'vue'
-import VueRouter from 'vue-router'
+import VueRouter, { RouteConfig } from 'vue-router'
 import Home from '../views/Home.vue'
 
 Vue.use(VueRouter)
 
-const routes = [
+const routes: RouteConfig[] = [
   {
     path: '/',
     name: 'Home',
@@ -25,5 +25,11 @@ const router = new VueRouter({
   base: process.env.BASE_URL,
   routes
 })
+
+//全局守卫 ok， 但是组件间的守卫不太一样
+router.beforeEach((to, from, next) => {
+  next()
+})
+
 
 export default router
